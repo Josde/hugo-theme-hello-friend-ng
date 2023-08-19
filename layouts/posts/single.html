@@ -18,9 +18,9 @@
     </div>
 
     <article>
-      <h1 class="post-title">
-        <a hreflang="{{.Site.Language}}" href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
-      </h1>
+      <a hreflang="{{.Site.Language}}" href="{{ .Permalink }}"></a><h1 class="post-title">
+        {{ .Title | markdownify }}
+      </h1></a>
 
       {{ with .Params.Description }}
         <div class="post-excerpt">{{ . }}</div>
