@@ -10,7 +10,7 @@
             <li class="dropdown">
                 <a class="dropbtn"><span class="flag fi fi-{{ index $.Site.Data.langFlags (.Lang) }}"></span></a>
                 <div class="dropdown-content">
-                    {{ if .hugo.IsMultiLingual }}
+                    {{ if hugo.IsMultilingual }}
                         {{ range $.Translations }}
                             <a title="{{ .Language }}" hreflang="{{.Site.Language}}" href="{{ .Permalink }}"><span class="flag fi fi-{{ index $.Site.Data.langFlags (.Lang) }}"></span></a>
                         {{ end }}
