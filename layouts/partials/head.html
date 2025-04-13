@@ -15,9 +15,9 @@
 {{ block "title" . }}
     <title lang="{{ .Site.Language }}">
         {{ if .IsHome }}
-            {{ $.Site.Title }} {{ with $.Site.Params.Subtitle }} — {{ . }} {{ end }}
+            {{ $.Site.Params.HumanTitle }} {{ with $.Site.Title }} — {{ . }} {{ end }}
         {{ else }}
-            {{ .Title }} :: {{ $.Site.Title }} {{ with $.Site.Params.Subtitle }} — {{ . }}{{ end }}
+            {{ .Title }} — {{ $.Site.Params.HumanTitle }} {{ with $.Site.Title }} — {{ . }} {{ end }}
         {{ end }}
     </title>
 {{ end }}
