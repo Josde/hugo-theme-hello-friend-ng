@@ -11,6 +11,92 @@
 <meta name="theme-color" content="{{ .Site.Params.themeColor }}" />
 <meta http-equiv="content-language" content="{{ .Site.Language }}">
 <link rel="canonical" href="{{ .Permalink }}" />
+{{ if .IsPage }}
+<script type="application/ld+json">
+{
+    "@context":"https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ .Title }},
+    "image": {{"favicon.ico" | relURL}},
+    "url": {{ .Permalink }},
+    "dateCreated": "{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }}",
+    "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }}",
+    "dateModified": "{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }}",
+    "inLanguage": "{{ .Site.Language }}",
+    "isFamilyFriendly": "true",
+    "copyrightYear": "{{ .PublishDate.Format "2006" }}",
+    "copyrightHolder": "{{ .Site.Params.author.name }}",
+    "accountablePerson": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.author.namer }}",
+    "url": "https://dospuntostr.es"
+    },
+    "author": {
+    "@type": "Person",
+    "name": "{{.Site.Params.author.name}}",
+    "url": "https://dospuntostr.es"
+    },
+    "creator": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.author.name }}",
+    "url": "https://dospuntostr.es"
+    },
+    "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Params.author.name }}",
+    "url": "https://dospuntostr.es",
+    "logo": {
+        "@type": "ImageObject",
+        "url": {{"favicon.ico" | relURL}}
+    }
+    },
+    "mainEntityOfPage": "True",
+    "articleBody": {{ .Content | safeJS | htmlUnescape | plainify }}
+}
+</script>
+{{ end }}
+
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+    "@context":"https://schema.org",
+    "@type": "WebSite",
+    "image": {{"favicon.ico" | relURL}},
+    "url": {{ .Permalink }},
+    "inLanguage": "{{ .Site.Language }}",
+    "abstract": "{{ .Site.Params.Description }}",
+    "isFamilyFriendly": "true",
+    "copyrightHolder": "{{ .Site.Params.author.name }}",
+    "accountablePerson": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.author.name }}",
+    "url": "https://dospuntostr.es"
+    },
+    "keywords": {{ .Site.Params }},
+    "author": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.author.name }}",
+    "url": "https://dospuntostr.es"
+    },
+    "creator": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.author.name }}",
+    "url": "https://dospuntostr.es"
+    },
+    "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Params.author.name }}",
+    "url": "https://dospuntostr.es",
+    "logo": {
+        "@type": "ImageObject",
+        "url": {{"favicon.ico" | relURL}}
+    }
+    },
+    "mainEntityOfPage": "True",
+    "articleBody": {{ .Content | safeJS | htmlUnescape | plainify }}
+}
+</script>
+{{ end }}
 
 {{ block "title" . }}
     <title lang="{{ .Site.Language }}">
